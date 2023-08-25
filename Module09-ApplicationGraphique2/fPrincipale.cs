@@ -19,6 +19,25 @@ namespace Module09_ApplicationGraphique2
             InitializeComponent();
             this.m_depotClients = p_depotClients;
         }
-        
+
+        private void fPrincipale_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSaisieUtilisateur_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bNouveau_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbListeRecherche_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

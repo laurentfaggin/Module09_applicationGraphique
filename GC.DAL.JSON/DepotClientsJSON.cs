@@ -93,5 +93,13 @@ namespace GC.DAL.JSON
                 .Where(client => client.ClientId == p_clientId)
                 .Select(cDTO => cDTO.VersEntite()).SingleOrDefault();
         }
+
+        public List<Client>RechercherClient(string p_informationPartielle)
+        {
+            string[] saisie = p_informationPartielle.Split(" "); 
+            return this.ListerClientsDTO()
+                 .Where(client => saisie.Any(s => client.Prenom.Contains(s) || client.Nom.Contains(s)))
+                 .Select(cDTO => cDTO.VersEntite()).ToList();
+        }
     }
 }

@@ -50,5 +50,10 @@ namespace GC.Entites
             this.m_adresses.RemoveAll(a => a.AdresseId == p_adresse.AdresseId);
             this.m_adresses.Add(p_adresse);
         }
-    }
+
+        public override string ToString()
+        {
+            return this.Prenom + " " + this.Nom;
+        }
+    }
 }

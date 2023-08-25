@@ -8,6 +8,7 @@ namespace GC.Entites
         void AjouterClient(Client p_client);
         List<Client> ListerClients();
         Client RechercherClient(Guid p_guid);
+        List<Client> RechercherClient(string p_informationPartielle);
         void ModifierClient(Client p_client);
     }
 }
