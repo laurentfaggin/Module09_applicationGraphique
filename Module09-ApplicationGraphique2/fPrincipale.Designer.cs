@@ -92,6 +92,7 @@
             this.Name = "fPrincipale";
             this.Text = "Gestion des clients";
             this.Load += new System.EventHandler(this.fPrincipale_Load);
+            this.TextChanged += new System.EventHandler(this.fPrincipale_TextChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

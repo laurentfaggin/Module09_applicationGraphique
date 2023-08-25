@@ -39,5 +39,10 @@ namespace Module09_ApplicationGraphique2
         {
 
         }
+
+        private void fPrincipale_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
