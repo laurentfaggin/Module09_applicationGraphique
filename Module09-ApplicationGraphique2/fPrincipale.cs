@@ -27,17 +27,39 @@ namespace Module09_ApplicationGraphique2
 
         private void tbSaisieUtilisateur_TextChanged(object sender, EventArgs e)
         {
-
+            lbListeRecherche.Items.Clear();
+            string rechercheSaisie = tbSaisieUtilisateur.Text;
+            List<Client> clientsTrouves = this.m_depotClients.RechercherClient(rechercheSaisie);
+            lbListeRecherche.Items.AddRange(clientsTrouves.ToArray());            
         }
 
         private void bNouveau_Click(object sender, EventArgs e)
         {
+            fSaisieClient sc = new fSaisieClient();
+            DialogResult dr = sc.ShowDialog(this);
 
+            if (dr == DialogResult.OK)
+            {
+                Client nouveauClient = sc.Result;
+                m_depotClients.AjouterClient(nouveauClient);
+            }
         }
 
         private void lbListeRecherche_DoubleClick(object sender, EventArgs e)
         {
+            if(lbListeRecherche.SelectedItem!= null)
+            {
+                Client clientSelectionne = (Client)lbListeRecherche.SelectedItem;
+                fSaisieClient fs = new fSaisieClient();
+                fs.Client = clientSelectionne;
+                DialogResult dr = fs.ShowDialog(this);
 
+                if (dr == DialogResult.OK)
+                {
+                    Client nouveauClient = fs.Result;
+                    m_depotClients.AjouterClient(nouveauClient);
+                }
+            }
         }
 
         private void fPrincipale_TextChanged(object sender, EventArgs e)
