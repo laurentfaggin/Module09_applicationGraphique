@@ -35,13 +35,19 @@ namespace Module09_ApplicationGraphique2
 
         private void bNouveau_Click(object sender, EventArgs e)
         {
-            fSaisieClient sc = new fSaisieClient();
+            string recherche = tbSaisieUtilisateur.Text;
+            fSaisieClient sc = new fSaisieClient(); 
+             
+
             DialogResult dr = sc.ShowDialog(this);
 
             if (dr == DialogResult.OK)
             {
                 Client nouveauClient = sc.Result;
                 m_depotClients.AjouterClient(nouveauClient);
+                List<Client> clientsTrouves = this.m_depotClients.RechercherClient(recherche);
+                lbListeRecherche.Items.Clear();
+                lbListeRecherche.Items.AddRange(clientsTrouves.ToArray());
             }
         }
 
@@ -58,12 +64,21 @@ namespace Module09_ApplicationGraphique2
                 {
                     Client nouveauClient = fs.Result;
                     m_depotClients.AjouterClient(nouveauClient);
+
+                    string recherche = tbSaisieUtilisateur.Text;
+                    List<Client> clientsTrouves = this.m_depotClients.RechercherClient(recherche);
+                    lbListeRecherche.Items.Clear();
+                    lbListeRecherche.Items.AddRange(clientsTrouves.ToArray());
                 }
             }
         }
 
         private void fPrincipale_TextChanged(object sender, EventArgs e)
         {
+            lbListeRecherche.Items.Clear();
+            string rechercheSaisie = tbSaisieUtilisateur.Text;
+            List<Client> clientsTrouves = this.m_depotClients.RechercherClient(rechercheSaisie);
+            lbListeRecherche.Items.AddRange(clientsTrouves.ToArray());
 
         }
     }

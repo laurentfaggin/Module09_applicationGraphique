@@ -14,7 +14,7 @@ namespace Module09_ApplicationGraphique2
     public partial class fSaisieClient : Form
     {
         private Client m_client;
-        private bool m_nouveau;
+        public bool m_nouveau;
         private Client m_result;
 
         public Client Client
@@ -48,16 +48,18 @@ namespace Module09_ApplicationGraphique2
             {
                 m_result = new Client(Client.ClientId, Client.Nom, Client.Prenom, Client.Adresses);
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void bAnnuler_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
 
         private void fSaisieClient_Load(object sender, EventArgs e)
         {
-            if (!Nouveau)
+            if (m_client != null)
             {
                 fSaisieClient.ActiveForm.Text = "Modification d'un client";
                 tbNom.Text = m_client.Nom;

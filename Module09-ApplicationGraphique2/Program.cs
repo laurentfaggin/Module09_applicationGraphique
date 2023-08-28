@@ -27,15 +27,14 @@ namespace Module09_ApplicationGraphique2
             string repertoireDepotClient = configuration["RepertoireDepotsClients"];
             string nomFichierDepotClient = configuration["NomFichierDepotClients"];
             string cheminComplet = Path.Combine(repertoireDepotClient, nomFichierDepotClient);
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-
-            if (!File.Exists(cheminComplet))
-            {
-                throw new InvalidOperationException($"Le fichier {cheminComplet} n'existe pas ou est inaccessible");
-            }
 
             string typeDepot = configuration["TypeDepot"];
+
+            //if (!File.Exists(cheminComplet))
+            //{
+            //    throw new InvalidOperationException($"Le fichier {cheminComplet} n'existe pas ou est inaccessible");
+            //}
+
 
             IUnityContainer conteneur = new UnityContainer();
             conteneur.RegisterInstance(configuration, InstanceLifetime.Singleton);
