@@ -98,7 +98,7 @@ namespace GC.DAL.JSON
         {
             string[] saisie = p_informationPartielle.Split(" "); 
             return this.ListerClientsDTO()
-                 .Where(client => saisie.Any(s => client.Prenom.Contains(s) || client.Nom.Contains(s)))
+                 .Where(client => saisie.Any(s => client.Prenom.Contains(s, StringComparison.InvariantCultureIgnoreCase) || client.Nom.Contains(s, StringComparison.InvariantCultureIgnoreCase)))
                  .Select(cDTO => cDTO.VersEntite()).ToList();
         }
     }

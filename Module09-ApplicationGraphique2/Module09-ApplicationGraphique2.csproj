@@ -17,10 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GC.ConsoleUI\GC.ConsoleUI.csproj" />
     <ProjectReference Include="..\GC.DAL.JSON\GC.DAL.JSON.csproj" />
     <ProjectReference Include="..\GC.DAL.XML\GC.DAL.XML.csproj" />
     <ProjectReference Include="..\GC.Entites\GC.Entites.csproj" />
+    <ProjectReference Include="..\GenerateurDonnees\GenerateurDonnees.csproj" />
   </ItemGroup>
 
   <ItemGroup>

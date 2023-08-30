@@ -1,4 +1,5 @@
-﻿using GC.Entites;
+﻿using GC.ConsoleUI;
+using GC.Entites;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,25 +14,16 @@ namespace Module09_ApplicationGraphique2
 {
     public partial class fSaisieClient : Form
     {
-        private Client m_client;
-        public bool m_nouveau;
-        private Client m_result;
+        public Client m_client;
+        public bool Nouveau { get { return m_client is null; } }
+        public Client Result { get; private set; }
 
         public Client Client
         {
             get { return m_client; }
             set { m_client = value; }
         }
-
-        public bool Nouveau
-        {
-            get { return m_nouveau; }
-        }
-
-        public Client Result
-        {
-            get { return m_result; }
-        }
+               
 
         public fSaisieClient()
         {
@@ -40,13 +32,14 @@ namespace Module09_ApplicationGraphique2
 
         private void bEnregistrer_Click(object sender, EventArgs e)
         {
-            if (!Nouveau)
+            if (Nouveau)
             {
-                m_result = Client;
+                Result = new Client(Guid.NewGuid(), tbNom.Text, tbPrenom.Text, new List<Adresse>() { GenerateurDonnees.GenererAdresseAleatoire() });
             }
             else
             {
-                m_result = new Client(Client.ClientId, Client.Nom, Client.Prenom, Client.Adresses);
+                Result = new Client(m_client.ClientId, tbNom.Text, tbPrenom.Text, new List<Adresse>() { GenerateurDonnees.GenererAdresseAleatoire() });
+
             }
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -59,15 +52,15 @@ namespace Module09_ApplicationGraphique2
 
         private void fSaisieClient_Load(object sender, EventArgs e)
         {
-            if (m_client != null)
+            if (!Nouveau)
             {
-                fSaisieClient.ActiveForm.Text = "Modification d'un client";
+                this.Text = "Modification d'un client";
                 tbNom.Text = m_client.Nom;
                 tbPrenom.Text = m_client.Prenom;
             }
             else
             {
-                fSaisieClient.ActiveForm.Text = "Saisie d'un nouveau client";
+                this.Text = "Saisie d'un nouveau client";
             }
         }
     }

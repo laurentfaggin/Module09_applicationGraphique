@@ -92,10 +92,9 @@
             this.Name = "fPrincipale";
             this.Text = "Gestion des clients";
             this.Load += new System.EventHandler(this.fPrincipale_Load);
-            this.TextChanged += new System.EventHandler(this.fPrincipale_TextChanged);
+            this.TextChanged += new System.EventHandler(this.tbSaisieUtilisateur_TextChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
